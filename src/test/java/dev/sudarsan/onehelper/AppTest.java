@@ -1,4 +1,4 @@
-package org.example;
+package dev.sudarsan.onehelper;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
