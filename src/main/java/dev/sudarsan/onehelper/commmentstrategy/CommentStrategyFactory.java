@@ -5,7 +5,8 @@ import dev.sudarsan.onehelper.exception.CommentStrategyException;
 import java.util.Map;
 
 public class CommentStrategyFactory {
-    private CommentStrategyFactory(){}
+    private CommentStrategyFactory() {
+    }
 
     private static final Map<String, CommentStrategy> strategyMap = Map.of(
             "java", new PrefixSuffixCommentStrategy("//"),
@@ -15,9 +16,9 @@ public class CommentStrategyFactory {
     );
 
     public static CommentStrategy createCommentStrategy(String fileType) throws CommentStrategyException {
-        if (!strategyMap.containsKey(fileType)){
+        if (!strategyMap.containsKey(fileType)) {
             throw new CommentStrategyException("Comment strategy unavailable for the file type: " + fileType);
         }
-        return strategyMap.get(fileType);
+        return strategyMap.get(fileType.toLowerCase());
     }
 }

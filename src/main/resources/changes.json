@@ -1,0 +1,23 @@
+{
+  "projects": {
+    "project 1": {
+      "setups": {
+        "local": {
+          "filePath" : "src/main/java/SampleClass.java",
+          "modificationType": "LINE",
+          "changes": [
+            {
+              "target" : "@Resource",
+              "actions": [
+                {
+                  "operation": "COMMENT",
+                  "occurrences": [29]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
