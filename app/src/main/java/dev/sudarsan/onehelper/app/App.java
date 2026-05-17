@@ -25,6 +25,8 @@ public class App {
             // Validate runtimeConfig
             RuntimeConfigValidator.validate(runtimeConfig);
 
+            // just a commit message
+
             // Ask for the input
             UserSelection selection = UserInputHandler.getUserSelection(runtimeConfig.getRootConfig(), args);
 
