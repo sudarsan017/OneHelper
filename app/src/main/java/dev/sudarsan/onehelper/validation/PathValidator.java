@@ -16,7 +16,7 @@ public class PathValidator {
     }
 
     private static String stripQuotes(String path) {
-        if ((path.startsWith("\"") && path.endsWith("\"") || (path.startsWith("\'") && path.endsWith("\'"))){
+        if ((path.startsWith("\"") && path.endsWith("\"")) || (path.startsWith("\'") && path.endsWith("\'"))){
             return path.substring(1, path.length() - 1);
         }
         return path;
