@@ -101,23 +101,27 @@ OneHelper/
 ```json
 {
   "projects": {
-    "project-name": [
-      {
-        "filePath": "relative/path",
-        "modificationType": "LINE",
-        "changes": [
+    "project-name": {
+      "setups": {
+        "setup-name": [
           {
-            "target": "text",
-            "actions": [
+            "modificationType": "LINE",
+            "filePath": "relative/path",
+            "changes": [
               {
-                "operation": "COMMENT",
-                "occurrences": 2
+                "target": "text",
+                "actions": [
+                  {
+                    "operation": "COMMENT",
+                    "occurrences": 2
+                  }
+                ]
               }
             ]
           }
         ]
       }
-    ]
+    }
   }
 }
 ```
@@ -143,7 +147,7 @@ Copies full file from `resources/` to target path.
 
 ---
 
-### INTELLIJ_CONFIG
+### INTELLIJ_IDE_CONFIG
 
 Template format:
 
@@ -214,25 +218,34 @@ Usage:
 
 ## Usage
 
-### Step 1: Clone the repository
+### Interactive Mode
 
-### Step 2: Run setup
+Run without arguments:
 
 ```
-setup.bat
+java -jar onehelper.jar
 ```
 
-This will:
+You will be prompted to:
 
-* Build a fat JAR
-* Generate `run.bat`
+* Select project
+* Select setup
+* Enter project path
 
 ---
 
-### Step 3: Execute
+### Direct Mode
+
+Run with arguments:
 
 ```
 run.bat projectName setupName projectPath
+```
+
+Example:
+
+```
+run.bat demo-project dev-setup C:\Projects\Demo
 ```
 
 ---
@@ -248,92 +261,58 @@ call run.bat projectB setup2 C:\Projects\B
 
 ## Sample Configurations
 
-### Line Modification
+### Full Example
 
 ```json
 {
   "projects": {
-    "demo": [
-      {
-        "filePath": "src/App.java",
-        "modificationType": "LINE",
-        "changes": [
+    "demo-project": {
+      "setups": {
+        "dev-setup": [
           {
-            "target": "System.out.println(\"Hello\");",
-            "actions": [
+            "modificationType": "LINE",
+            "filePath": "src/main/java/App.java",
+            "changes": [
               {
-                "operation": "COMMENT"
+                "target": "System.out.println(\"Hello\");",
+                "actions": [
+                  {
+                    "operation": "COMMENT"
+                  }
+                ]
+              },
+              {
+                "target": "int port = 8080;",
+                "actions": [
+                  {
+                    "operation": "UPDATE",
+                    "value": "int port = 9090;"
+                  }
+                ]
               }
             ]
           },
           {
-            "target": "int port = 8080;",
-            "actions": [
+            "modificationType": "WHOLE",
+            "filePath": "src/main/resources/application.yml",
+            "sourcePath": "application-dev.yml"
+          },
+          {
+            "modificationType": "INTELLIJ_IDE_CONFIG",
+            "configurations": [
               {
-                "operation": "UPDATE",
-                "value": "int port = 9090;"
+                "sourcePath": "run-config.xml",
+                "enabled": true
               }
             ]
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
----
-
-### Whole File Modification
-
-```json
-{
-  "projects": {
-    "demo": [
-      {
-        "filePath": "src/config.yml",
-        "sourcePath": "config-template.yml",
-        "modificationType": "WHOLE"
-      }
-    ]
-  }
-}
-```
-
----
-
-### IntelliJ Configuration
-
-```json
-{
-  "projects": {
-    "demo": [
-      {
-        "modificationType": "INTELLIJ_CONFIG",
-        "configurations": [
+          },
           {
-            "sourcePath": "run-config.xml"
+            "modificationType": "GIT_PATCH",
+            "sourcePath": "feature.patch"
           }
         ]
       }
-    ]
-  }
-}
-```
-
----
-
-### Git Patch
-
-```json
-{
-  "projects": {
-    "demo": [
-      {
-        "modificationType": "GIT_PATCH",
-        "sourcePath": "feature.patch"
-      }
-    ]
+    }
   }
 }
 ```
@@ -364,3 +343,9 @@ call run.bat projectB setup2 C:\Projects\B
 * Extensible over rigid
 * Automated over repetitive
 * Clean separation of concerns
+
+---
+
+## Summary
+
+OneHelper transforms local setup into a fast, automated, and reliable process using structured configuration and extensible design.
