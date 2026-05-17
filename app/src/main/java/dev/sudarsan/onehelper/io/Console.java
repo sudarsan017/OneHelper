@@ -1,0 +1,11 @@
+package dev.sudarsan.onehelper.io;
+
+public class Console {
+    public static void success(String message) {
+        System.out.println(ConsoleColors.GREEN + message + ConsoleColors.RESET);
+    }
+
+    public static void error(String message) {
+        System.out.println(ConsoleColors.RED + message + ConsoleColors.RESET);
+    }
+}
