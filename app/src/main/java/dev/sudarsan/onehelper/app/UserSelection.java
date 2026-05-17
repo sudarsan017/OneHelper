@@ -31,5 +31,7 @@ public class UserSelection {
         return setup;
     }
 
-    public String getProjectPath() {}
+    public String getProjectPath() {
+        return projectPath;
+    }
 }
