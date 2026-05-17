@@ -1,0 +1,85 @@
+{
+  "java": {
+    "prefix": "//"
+  },
+  "python": {
+    "prefix": "#"
+  },
+  "javascript": {
+    "prefix": "//"
+  },
+  "typescript": {
+    "prefix": "//"
+  },
+  "c": {
+    "prefix": "//"
+  },
+  "cpp": {
+    "prefix": "//"
+  },
+  "csharp": {
+    "prefix": "//"
+  },
+  "go": {
+    "prefix": "//"
+  },
+  "rust": {
+    "prefix": "//"
+  },
+  "kotlin": {
+    "prefix": "//"
+  },
+  "swift": {
+    "prefix": "//"
+  },
+  "php": {
+    "prefix": "//"
+  },
+  "ruby": {
+    "prefix": "#"
+  },
+  "shell": {
+    "prefix": "#"
+  },
+  "bash": {
+    "prefix": "#"
+  },
+  "yaml": {
+    "prefix": "#"
+  },
+  "dockerfile": {
+    "prefix": "#"
+  },
+  "sql": {
+    "prefix": "--"
+  },
+  "html": {
+    "prefix": "<!--",
+    "suffix": "-->"
+  },
+  "xml": {
+    "prefix": "<!--",
+    "suffix": "-->"
+  },
+  "css": {
+    "prefix": "/*",
+    "suffix": "*/"
+  },
+  "scss": {
+    "prefix": "/*",
+    "suffix": "*/"
+  },
+  "properties": {
+    "prefix": "#"
+  },
+  "ini": {
+    "prefix": ";"
+  },
+  "makefile": {
+    "prefix": "#"
+  },
+  "markdown": {
+    "prefix": "<!--",
+    "suffix": "-->"
+  }
+}
