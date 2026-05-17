@@ -21,7 +21,7 @@ public class LineBasedModificationConfigValidator extends FileBasedModificationC
     /*
     * This validator ensures the JSON follows the contract for line based changes
     * The change attributes, neither of them can be null
-    * The comment strategy existence is ensured for teh given file type
+    * The comment strategy existence is ensured for the given file type
     * The update operation ensures a new value is present
     * If you give multiple actions with no occurrences, the validator throws an exception*/
 

@@ -1,3 +1,49 @@
 {
-
+  "projects": {
+    "project name": [
+      {
+        "filePath": "specify-your-relative-file-path-from-your-project",
+        "modificationType": "LINE",
+        "changes": [
+          {
+            "target": "specify-your-target-line-that-has-to-be-modified",
+            "actions": [
+              {
+                "operation": "COMMENT",
+                "occurrences": 2
+              }
+            ]
+          },
+          {
+            "target": "specify-your-target-line-that-has-to-be-modified",
+            "actions": [
+              {
+                "operation": "COMMENT",
+                "occurrences": 5
+              }
+            ]
+          }
+        ],
+        "enabled": false
+      },
+      {
+        "filePath": "specify-your-relative-file-path-from-your-project",
+        "sourcePath": "specify-your-file-path-from-resources-folder",
+        "modificationType": "WHOLE"
+      },
+      {
+        "modificationType": "INTELLIJ_CONFIG",
+        "configurations": [
+          {
+            "sourcePath": "specify-your-file-path-from-resources-folder",
+            "enabled": true
+          }
+        ]
+      },
+      {
+        "modificationType": "GIT_PATCH",
+        "sourcePath": "specify-your-patch-file-path-from-resources-folder"
+      }
+    ]
+  }
 }
