@@ -8,4 +8,8 @@ public class Console {
     public static void error(String message) {
         System.out.println(ConsoleColors.RED + message + ConsoleColors.RESET);
     }
+
+    public static void info(String message){
+        System.out.println(ConsoleColors.CYAN + message + ConsoleColors.RESET);
+    }
 }

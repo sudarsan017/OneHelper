@@ -25,13 +25,11 @@ public class App {
             // Validate runtimeConfig
             RuntimeConfigValidator.validate(runtimeConfig);
 
-            // just a commit message
-
             // Ask for the input
             UserSelection selection = UserInputHandler.getUserSelection(runtimeConfig.getRootConfig(), args);
 
             //Project path
-            Path projectRoot = UserInputHandler.getProjectRoot(selection);
+            Path projectRoot = selection.getProjectPath();
 
             // Project context
             ProjectContext context = new ProjectContext(projectRoot, resourcesDirectory);

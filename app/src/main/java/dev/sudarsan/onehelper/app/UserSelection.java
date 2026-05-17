@@ -1,26 +1,16 @@
 package dev.sudarsan.onehelper.app;
 
+import java.nio.file.Path;
+
 public class UserSelection {
     private final String project;
     private final String setup;
-    private final String projectPath;
+    private final Path projectPath;
 
-    public UserSelection(String project, String setup, String projectPath) {
+    public UserSelection(String project, String setup, Path projectPath) {
         this.project = project;
         this.setup = setup;
         this.projectPath = projectPath;
-    }
-
-    public UserSelection(String project) {
-        this.project = project;
-        this.setup = null;
-        this.projectPath = null;
-    }
-
-    public UserSelection(String project, String setup) {
-        this.project = project;
-        this.setup = setup;
-        this.projectPath = null;
     }
 
     public String getProject() {
@@ -31,7 +21,12 @@ public class UserSelection {
         return setup;
     }
 
-    public String getProjectPath() {
+    public Path getProjectPath() {
         return projectPath;
+    }
+
+    @Override
+    public String toString() {
+        return "Project: " + project + "\nSetup: " + setup + "\nProject path: " + projectPath;
     }
 }
