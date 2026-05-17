@@ -1,49 +1,51 @@
 {
   "projects": {
-    "project name": [
-      {
-        "filePath": "specify-your-relative-file-path-from-your-project",
-        "modificationType": "LINE",
-        "changes": [
+    "demo-project": {
+      "setups": {
+        "dev-setup": [
           {
-            "target": "specify-your-target-line-that-has-to-be-modified",
-            "actions": [
+            "modificationType": "LINE",
+            "filePath": "src/main/java/App.java",
+            "changes": [
               {
-                "operation": "COMMENT",
-                "occurrences": 2
+                "target": "System.out.println(\"Hello\");",
+                "actions": [
+                  {
+                    "operation": "COMMENT"
+                  }
+                ]
+              },
+              {
+                "target": "int port = 8080;",
+                "actions": [
+                  {
+                    "operation": "UPDATE",
+                    "value": "int port = 9090;"
+                  }
+                ]
               }
             ]
           },
           {
-            "target": "specify-your-target-line-that-has-to-be-modified",
-            "actions": [
+            "modificationType": "WHOLE",
+            "filePath": "src/main/resources/application.yml",
+            "sourcePath": "application-dev.yml"
+          },
+          {
+            "modificationType": "INTELLIJ_IDE_CONFIG",
+            "configurations": [
               {
-                "operation": "COMMENT",
-                "occurrences": 5
+                "sourcePath": "run-config.xml",
+                "enabled": true
               }
             ]
-          }
-        ],
-        "enabled": false
-      },
-      {
-        "filePath": "specify-your-relative-file-path-from-your-project",
-        "sourcePath": "specify-your-file-path-from-resources-folder",
-        "modificationType": "WHOLE"
-      },
-      {
-        "modificationType": "INTELLIJ_CONFIG",
-        "configurations": [
+          },
           {
-            "sourcePath": "specify-your-file-path-from-resources-folder",
-            "enabled": true
+            "modificationType": "GIT_PATCH",
+            "sourcePath": "feature.patch"
           }
         ]
-      },
-      {
-        "modificationType": "GIT_PATCH",
-        "sourcePath": "specify-your-patch-file-path-from-resources-folder"
       }
-    ]
+    }
   }
 }
