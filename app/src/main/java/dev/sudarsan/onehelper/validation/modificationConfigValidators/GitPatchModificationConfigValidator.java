@@ -1,13 +1,12 @@
 package dev.sudarsan.onehelper.validation.modificationConfigValidators;
 
 import dev.sudarsan.onehelper.exception.ValidationException;
-import dev.sudarsan.onehelper.modification.config.BaseModificationConfig;
 import dev.sudarsan.onehelper.modification.config.GitPatchModificationConfig;
 import dev.sudarsan.onehelper.util.ValueCheckerUtil;
 
-public class GitPatchModificationConfigValidator extends BaseModificationConfigValidator<GitPatchModificationConfig> {
+public class GitPatchModificationConfigValidator implements ModificationConfigValidator<GitPatchModificationConfig> {
     @Override
-    public void validateModificationConfig(GitPatchModificationConfig modificationConfig) throws ValidationException {
+    public void validate(GitPatchModificationConfig modificationConfig) throws ValidationException {
         validateSourceFilePath(modificationConfig.getSourcePath());
     }
 

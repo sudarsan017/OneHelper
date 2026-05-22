@@ -6,7 +6,7 @@ import dev.sudarsan.onehelper.util.ValueCheckerUtil;
 
 public class WholeFileModificationConfigValidator extends FileBasedModificationConfigValidator<WholeFileModificationConfig> {
     @Override
-    public void validateModificationConfig(WholeFileModificationConfig modificationConfig) throws ValidationException {
+    public void validate(WholeFileModificationConfig modificationConfig) throws ValidationException {
         validateFilePath(modificationConfig);
         validateSourceFilePath(modificationConfig.getSourcePath());
     }

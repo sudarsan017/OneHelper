@@ -71,13 +71,13 @@ public class RootConfigValidator {
         }
 
         if (modificationConfig instanceof LineBasedModificationConfig){
-            lineConfigValidator.validateModificationConfig((LineBasedModificationConfig) modificationConfig);
+            lineConfigValidator.validate((LineBasedModificationConfig) modificationConfig);
         } else if (modificationConfig instanceof WholeFileModificationConfig) {
-            wholeFileConfigValidator.validateModificationConfig((WholeFileModificationConfig) modificationConfig);
+            wholeFileConfigValidator.validate((WholeFileModificationConfig) modificationConfig);
         } else if (modificationConfig instanceof IntellijIdeConfigModificationConfig) {
-            intellijConfigValidator.validateModificationConfig((IntellijIdeConfigModificationConfig) modificationConfig);
+            intellijConfigValidator.validate((IntellijIdeConfigModificationConfig) modificationConfig);
         } else if (modificationConfig instanceof GitPatchModificationConfig){
-            gitPatchConfigValidator.validateModificationConfig((GitPatchModificationConfig) modificationConfig);
+            gitPatchConfigValidator.validate((GitPatchModificationConfig) modificationConfig);
         } else {
             throw new ValidationException("Unknown modification config type: " + modificationConfig.getClass().getName());
         }

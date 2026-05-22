@@ -9,7 +9,7 @@ import java.util.List;
 
 public class IntellijConfigModificationConfigValidator extends FileBasedModificationConfigValidator<IntellijIdeConfigModificationConfig> {
     @Override
-    public void validateModificationConfig(IntellijIdeConfigModificationConfig modificationConfig) throws ValidationException {
+    public void validate(IntellijIdeConfigModificationConfig modificationConfig) throws ValidationException {
         validateFilePath(modificationConfig);
         validateConfigurations(modificationConfig.getConfigurations());
     }

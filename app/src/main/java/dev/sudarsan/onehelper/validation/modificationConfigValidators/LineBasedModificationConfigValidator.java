@@ -26,7 +26,7 @@ public class LineBasedModificationConfigValidator extends FileBasedModificationC
     * If you give multiple actions with no occurrences, the validator throws an exception*/
 
     @Override
-    public void validateModificationConfig(LineBasedModificationConfig modificationConfig) throws ValidationException {
+    public void validate(LineBasedModificationConfig modificationConfig) throws ValidationException {
         validateFilePath(modificationConfig);
         validateChanges(modificationConfig.getChanges());
         checkForCommentStrategies(modificationConfig);
