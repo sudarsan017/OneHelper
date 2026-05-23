@@ -20,7 +20,7 @@ public class IntellijConfigModificationConfigValidator extends FileBasedModifica
         }
 
         for (Configuration configuration : configurations) {
-            if (ValueCheckerUtil.isNullOrEmpty(configuration.getTemplatePath())){
+            if (ValueCheckerUtil.isNullOrEmpty(configuration.getTemplatePath())) {
                 throw new ValidationException("Template path is null or empty");
             }
         }

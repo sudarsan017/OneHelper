@@ -7,10 +7,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class PathValidator {
-    private PathValidator(){}
+    private PathValidator() {
+    }
 
     public static Path validateDirectoryPath(String path) throws ValidationException {
-        if (ValueCheckerUtil.isNullOrEmpty(path)){
+        if (ValueCheckerUtil.isNullOrEmpty(path)) {
             throw new ValidationException("Path cannot be null or empty");
         }
         String strippedPath = stripQuotes(path);
@@ -22,7 +23,7 @@ public class PathValidator {
     }
 
     private static String stripQuotes(String path) {
-        if ((path.startsWith("\"") && path.endsWith("\"")) || (path.startsWith("'") && path.endsWith("'"))){
+        if ((path.startsWith("\"") && path.endsWith("\"")) || (path.startsWith("'") && path.endsWith("'"))) {
             return path.substring(1, path.length() - 1);
         }
         return path;

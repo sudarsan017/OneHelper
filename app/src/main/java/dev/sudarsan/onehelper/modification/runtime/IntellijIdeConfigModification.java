@@ -49,7 +49,7 @@ public class IntellijIdeConfigModification extends IdeConfigModification {
     public void apply(ProjectContext context) throws ModificationException {
         List<Element> elements = new ArrayList<>();
 
-        try{
+        try {
             addElements(context, elements);
 
             Path targetFile = context.resolveProjectFile(filePath);
@@ -82,7 +82,7 @@ public class IntellijIdeConfigModification extends IdeConfigModification {
 
         DOMSource source = new DOMSource(targetDoc);
         StreamResult result = new StreamResult(targetFile.toFile());
-        transformer.transform(source,result);
+        transformer.transform(source, result);
     }
 
     private Element findOrCreateRunManager(Document targetDoc) {
@@ -136,7 +136,7 @@ public class IntellijIdeConfigModification extends IdeConfigModification {
     }
 
     private String getStringFromConfiguration(ProjectContext context, Configuration configuration) throws ModificationException {
-        try{
+        try {
             Path configFile = context.resolveResourcesFile(configuration.getTemplatePath());
             return Files.readString(configFile);
         } catch (IOException e) {

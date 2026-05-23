@@ -12,7 +12,7 @@ public class WholeFileModificationConfigValidator extends FileBasedModificationC
     }
 
     private void validateSourceFilePath(String sourcePath) throws ValidationException {
-        if (ValueCheckerUtil.isNullOrEmpty(sourcePath)){
+        if (ValueCheckerUtil.isNullOrEmpty(sourcePath)) {
             throw new ValidationException("Source path cannot be null or empty");
         }
     }

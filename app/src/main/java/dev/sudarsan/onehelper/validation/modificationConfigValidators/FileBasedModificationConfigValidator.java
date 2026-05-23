@@ -6,7 +6,7 @@ import dev.sudarsan.onehelper.util.ValueCheckerUtil;
 
 abstract class FileBasedModificationConfigValidator<T extends FileBasedModificationConfig> implements ModificationConfigValidator<T> {
     void validateFilePath(T config) throws ValidationException {
-        if (ValueCheckerUtil.isNullOrEmpty(config.getFilePath())){
+        if (ValueCheckerUtil.isNullOrEmpty(config.getFilePath())) {
             throw new ValidationException("File path is null or empty");
         }
     }

@@ -19,11 +19,11 @@ public class LineBasedModificationConfigValidator extends FileBasedModificationC
     }
 
     /*
-    * This validator ensures the JSON follows the contract for line based changes
-    * The change attributes, neither of them can be null
-    * The comment strategy existence is ensured for the given file type
-    * The update operation ensures a new value is present
-    * If you give multiple actions with no occurrences, the validator throws an exception*/
+     * This validator ensures the JSON follows the contract for line based changes
+     * The change attributes, neither of them can be null
+     * The comment strategy existence is ensured for the given file type
+     * The update operation ensures a new value is present
+     * If you give multiple actions with no occurrences, the validator throws an exception*/
 
     @Override
     public void validate(LineBasedModificationConfig modificationConfig) throws ValidationException {
@@ -34,7 +34,7 @@ public class LineBasedModificationConfigValidator extends FileBasedModificationC
 
     private void checkForCommentStrategies(LineBasedModificationConfig modificationConfig) throws ValidationException {
         for (LineChange change : modificationConfig.getChanges()) {
-            if (hasCommentOperation(change)){
+            if (hasCommentOperation(change)) {
                 checkCommentStrategy(modificationConfig.getFilePath());
                 break;
             }
@@ -44,13 +44,13 @@ public class LineBasedModificationConfigValidator extends FileBasedModificationC
     private void checkCommentStrategy(String filePath) throws ValidationException {
         String fileType = filePath.substring(filePath.lastIndexOf('.') + 1);
         if (!commentStrategyMap.containsKey(fileType)) {
-            throw new ValidationException("The file type '"+fileType+"' has a comment operation, but comment strategy has not been added into the comment_strategies.json");
+            throw new ValidationException("The file type '" + fileType + "' has a comment operation, but comment strategy has not been added into the comment_strategies.json");
         }
     }
 
     private boolean hasCommentOperation(LineChange change) {
         for (Action action : change.getActions()) {
-            if (action.getOperation().equals(Operation.COMMENT)){
+            if (action.getOperation().equals(Operation.COMMENT)) {
                 return true;
             }
         }
@@ -58,7 +58,7 @@ public class LineBasedModificationConfigValidator extends FileBasedModificationC
     }
 
     private void validateChanges(List<LineChange> changes) throws ValidationException {
-        if (ValueCheckerUtil.isNullOrEmpty(changes)){
+        if (ValueCheckerUtil.isNullOrEmpty(changes)) {
             throw new ValidationException("Changes list cannot be null or empty");
         }
 
@@ -68,12 +68,12 @@ public class LineBasedModificationConfigValidator extends FileBasedModificationC
     }
 
     private void validateChange(LineChange change) throws ValidationException {
-        if (change == null){
+        if (change == null) {
             throw new ValidationException("Change cannot be null");
         }
 
         // target check
-        if (ValueCheckerUtil.isNullOrEmpty(change.getTarget())){
+        if (ValueCheckerUtil.isNullOrEmpty(change.getTarget())) {
             throw new ValidationException("Target line cannot be null or empty");
         }
 
@@ -82,7 +82,7 @@ public class LineBasedModificationConfigValidator extends FileBasedModificationC
     }
 
     private void validateActions(List<Action> actions) throws ValidationException {
-        if (ValueCheckerUtil.isNullOrEmpty(actions)){
+        if (ValueCheckerUtil.isNullOrEmpty(actions)) {
             throw new ValidationException("Actions list cannot be null or empty");
         }
 
@@ -92,7 +92,7 @@ public class LineBasedModificationConfigValidator extends FileBasedModificationC
     }
 
     private void validateAction(Action action, int actionsSize) throws ValidationException {
-        if (action == null){
+        if (action == null) {
             throw new ValidationException("Action cannot be null");
         }
 
@@ -108,26 +108,26 @@ public class LineBasedModificationConfigValidator extends FileBasedModificationC
 
     private void validateNewValue(Action action) throws ValidationException {
         // if there is an UPDATE operation, then value cannot be null in the action
-        if (action.getOperation() == Operation.UPDATE && action.getValue() == null){
+        if (action.getOperation() == Operation.UPDATE && action.getValue() == null) {
             throw new ValidationException("Value cannot be null for UPDATE operation in action");
         }
     }
 
     private void validateActionAndOccurrences(Action action, int actionsSize) throws ValidationException {
         // if there are multiple actions, then occurrences cannot be null or empty in any action
-        if (ValueCheckerUtil.isNullOrEmpty(action.getOccurrences())){
-            if (actionsSize > 1){
+        if (ValueCheckerUtil.isNullOrEmpty(action.getOccurrences())) {
+            if (actionsSize > 1) {
                 throw new ValidationException("Occurrence cannot be null or empty in action when there are multiple actions");
             }
         }
     }
 
     private void validateOperation(Operation operation) throws ValidationException {
-        if (operation == null){
+        if (operation == null) {
             throw new ValidationException("Action operation cannot be null");
         }
 
-        if (operation.toString().isEmpty()){
+        if (operation.toString().isEmpty()) {
             throw new ValidationException("Action operation cannot be empty");
         }
     }

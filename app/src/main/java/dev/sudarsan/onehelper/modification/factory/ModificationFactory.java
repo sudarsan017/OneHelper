@@ -22,8 +22,8 @@ public class ModificationFactory {
     public List<Modification> getModifications(List<ModificationConfig> modificationConfigs) throws ModificationException {
         List<Modification> modifications = new ArrayList<>();
 
-        for (ModificationConfig modificationConfig : modificationConfigs){
-            if (!modificationConfig.isEnabled()){
+        for (ModificationConfig modificationConfig : modificationConfigs) {
+            if (!modificationConfig.isEnabled()) {
                 continue;
             }
 
@@ -34,13 +34,13 @@ public class ModificationFactory {
     }
 
     private Modification getModification(ModificationConfig modificationConfig) throws ModificationException {
-        if (modificationConfig instanceof LineBasedModificationConfig){
+        if (modificationConfig instanceof LineBasedModificationConfig) {
             return getLineBasedModification(modificationConfig);
-        } else if (modificationConfig instanceof WholeFileModificationConfig){
+        } else if (modificationConfig instanceof WholeFileModificationConfig) {
             return getWholeFileModification(modificationConfig);
         } else if (modificationConfig instanceof IntellijIdeConfigModificationConfig) {
             return getIntellijConfigModification(modificationConfig);
-        } else if (modificationConfig instanceof GitPatchModificationConfig){
+        } else if (modificationConfig instanceof GitPatchModificationConfig) {
             return getGitPatchModification(modificationConfig);
         } else {
             throw new ModificationException("Unsupported modification config type: " + modificationConfig.getClass().getName());
@@ -59,7 +59,7 @@ public class ModificationFactory {
     }
 
     private Modification getWholeFileModification(ModificationConfig modificationConfig) {
-        WholeFileModificationConfig  wholeFileModificationConfig = (WholeFileModificationConfig) modificationConfig;
+        WholeFileModificationConfig wholeFileModificationConfig = (WholeFileModificationConfig) modificationConfig;
 
         return new WholeFileModification(wholeFileModificationConfig.getSourcePath(), wholeFileModificationConfig.getFilePath());
     }

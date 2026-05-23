@@ -32,7 +32,7 @@ public class UserInputHandler {
 
     private static Path getProjectPath() {
         System.out.print("Enter the project path: ");
-        try{
+        try {
             String path = sc.nextLine();
             return PathValidator.validateDirectoryPath(path);
         } catch (ValidationException e) {
@@ -48,15 +48,15 @@ public class UserInputHandler {
         String setup = getSelectionFromArgsOrList(args, 1, "setup", rootConfig.getProjects().get(project).getSetups().keySet().stream().toList());
         Path projectPath = getProjectPathFromArgs(args);
 
-        return new UserSelection(project,setup, projectPath);
+        return new UserSelection(project, setup, projectPath);
     }
 
     private static Path getProjectPathFromArgs(String[] args) {
-        if (2 < args.length){
+        if (2 < args.length) {
             String projectPath = args[2];
-            try{
+            try {
                 return PathValidator.validateDirectoryPath(projectPath);
-            } catch (ValidationException e){
+            } catch (ValidationException e) {
                 Console.error(e.getMessage());
             }
         }
@@ -66,9 +66,9 @@ public class UserInputHandler {
     }
 
     private static String getSelectionFromArgsOrList(String[] args, int index, String item, List<String> list) {
-        if (index < args.length){
+        if (index < args.length) {
             String value = args[index];
-            if (!ValueCheckerUtil.isNullOrEmpty(value) && list.contains(value)){
+            if (!ValueCheckerUtil.isNullOrEmpty(value) && list.contains(value)) {
                 return value;
             }
         }
@@ -78,18 +78,18 @@ public class UserInputHandler {
     }
 
     private static String getSelectionFromList(List<String> list, String item) {
-        System.out.println("Select the " + item +":");
-        for (int i=0;i<list.size();i++){
-            System.out.println((i+1) + ") " + list.get(i));
+        System.out.println("Select the " + item + ":");
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println((i + 1) + ") " + list.get(i));
         }
 
         String selection = list.get(getOption(list.size()));
-        Console.info("Selected " + item+": "+selection);
+        Console.info("Selected " + item + ": " + selection);
 
         return selection;
     }
 
-    public static int getOption(int size){
+    public static int getOption(int size) {
         System.out.print("Enter the option: ");
         String option = sc.nextLine();
 
@@ -103,7 +103,7 @@ public class UserInputHandler {
         } catch (NumberFormatException e) {
             Console.error("Invalid input. Please try again by entering a valid number");
             return getOption(size);
-        } catch (InvalidOptionException e){
+        } catch (InvalidOptionException e) {
             Console.error(e.getMessage());
             return getOption(size);
         }

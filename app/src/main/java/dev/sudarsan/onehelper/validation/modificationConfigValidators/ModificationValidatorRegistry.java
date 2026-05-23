@@ -9,7 +9,7 @@ import java.util.Map;
 public class ModificationValidatorRegistry {
     private final Map<Class<?>, ModificationConfigValidator<?>> registry = new HashMap<>();
 
-    public ModificationValidatorRegistry(Map<String, CommentStrategy> commentStrategyMap){
+    public ModificationValidatorRegistry(Map<String, CommentStrategy> commentStrategyMap) {
         registry.put(LineBasedModificationConfig.class, new LineBasedModificationConfigValidator(commentStrategyMap));
         registry.put(WholeFileModificationConfig.class, new WholeFileModificationConfigValidator());
         registry.put(IntellijIdeConfigModificationConfig.class, new IntellijConfigModificationConfigValidator());
@@ -17,7 +17,7 @@ public class ModificationValidatorRegistry {
     }
 
     @SuppressWarnings("unchecked")
-    public <T extends ModificationConfig> ModificationConfigValidator<T> getValidator(T config){
+    public <T extends ModificationConfig> ModificationConfigValidator<T> getValidator(T config) {
         return (ModificationConfigValidator<T>) registry.get(config.getClass());
     }
 }

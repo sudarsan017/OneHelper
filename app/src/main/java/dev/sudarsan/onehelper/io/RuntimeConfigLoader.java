@@ -23,10 +23,10 @@ public class RuntimeConfigLoader {
     }
 
     private static Map<String, Integer> loadPortConfigMap(Path resourceDirectory) throws JsonLoadingException {
-        try{
+        try {
             Path portConfigPath = resourceDirectory.resolve("ports.json");
             return mapper.readValue(portConfigPath.toFile(),
-                    new TypeReference<Map<String, Integer>>() {
+                    new TypeReference<>() {
                     });
         } catch (IOException e) {
             throw new JsonLoadingException("Error loading the file ports.json");

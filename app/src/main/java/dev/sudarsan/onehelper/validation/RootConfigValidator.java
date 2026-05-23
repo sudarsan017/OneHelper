@@ -27,11 +27,11 @@ public class RootConfigValidator {
     }
 
     private void validateProjectConfigs(RootConfig rootConfig) throws ValidationException {
-        if (ValueCheckerUtil.isNullOrEmpty(rootConfig.getProjects())){
+        if (ValueCheckerUtil.isNullOrEmpty(rootConfig.getProjects())) {
             throw new ValidationException("The configuration file is empty or has no projects defined");
         }
 
-        for (ProjectConfig projectConfig:rootConfig.getProjects().values()){
+        for (ProjectConfig projectConfig : rootConfig.getProjects().values()) {
             validateProjectConfig(projectConfig);
         }
     }
@@ -45,12 +45,12 @@ public class RootConfigValidator {
     }
 
     private void validateModificationConfigs(ProjectConfig projectConfig) throws ValidationException {
-        if (ValueCheckerUtil.isNullOrEmpty(projectConfig.getSetups())){
+        if (ValueCheckerUtil.isNullOrEmpty(projectConfig.getSetups())) {
             throw new ValidationException("Project configuration must have at least one setup defined");
         }
 
-        for (List<ModificationConfig> modificationConfigList:projectConfig.getSetups().values()){
-            for (ModificationConfig modificationConfig:modificationConfigList){
+        for (List<ModificationConfig> modificationConfigList : projectConfig.getSetups().values()) {
+            for (ModificationConfig modificationConfig : modificationConfigList) {
                 validateModificationConfig(modificationConfig);
             }
         }
@@ -62,7 +62,7 @@ public class RootConfigValidator {
         }
 
         ModificationConfigValidator<ModificationConfig> validator = validatorRegistry.getValidator(modificationConfig);
-        if (validator == null){
+        if (validator == null) {
             throw new ValidationException("Unknown modification config type: " + modificationConfig.getClass().getName());
         }
 

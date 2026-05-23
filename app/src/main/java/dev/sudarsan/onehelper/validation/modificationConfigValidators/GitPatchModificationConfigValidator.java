@@ -11,11 +11,11 @@ public class GitPatchModificationConfigValidator implements ModificationConfigVa
     }
 
     private void validateSourceFilePath(String sourcePath) throws ValidationException {
-        if  (ValueCheckerUtil.isNullOrEmpty(sourcePath)){
+        if (ValueCheckerUtil.isNullOrEmpty(sourcePath)) {
             throw new ValidationException("Source path cannot be null or empty");
         }
 
-        if (!sourcePath.endsWith(".patch")){
+        if (!sourcePath.endsWith(".patch")) {
             throw new ValidationException("Source file has to be a git's .patch file");
         }
     }

@@ -32,9 +32,9 @@ public class GitPatchModification implements Modification {
     }
 
     private void applyPatch(Path targetDirectory, Path sourcePatchFile) throws ModificationException {
-        ProcessResult result = run(targetDirectory, "git", "apply","--whitespace=nowarn", sourcePatchFile.toAbsolutePath().toString());
+        ProcessResult result = run(targetDirectory, "git", "apply", "--whitespace=nowarn", sourcePatchFile.toAbsolutePath().toString());
         if (result.exitCode != 0) {
-            throw new ModificationException("Failed to apply patch file "+sourcePatchFile + " to target directory "+targetDirectory+":\n"+result.output);
+            throw new ModificationException("Failed to apply patch file " + sourcePatchFile + " to target directory " + targetDirectory + ":\n" + result.output);
         }
     }
 
