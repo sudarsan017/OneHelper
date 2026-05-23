@@ -1,7 +1,7 @@
 package dev.sudarsan.onehelper.io;
 
 public class ConsoleColors {
-    public static final String RESET = "\u0001B[0m";
+    public static final String RESET = "\u001B[0m";
 
     public static final String RED = "\u001B[31m";
     public static final String GREEN = "\u001B[32m";

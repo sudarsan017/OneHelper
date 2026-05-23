@@ -9,6 +9,10 @@ public class Console {
         System.out.println(ConsoleColors.RED + message + ConsoleColors.RESET);
     }
 
+    public static void warn(String message){
+        System.out.println(ConsoleColors.YELLOW + message + ConsoleColors.RESET);
+    }
+
     public static void info(String message){
         System.out.println(ConsoleColors.CYAN + message + ConsoleColors.RESET);
     }

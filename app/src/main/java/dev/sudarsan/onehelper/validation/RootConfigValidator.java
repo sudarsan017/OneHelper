@@ -6,25 +6,16 @@ import dev.sudarsan.onehelper.exception.ValidationException;
 import dev.sudarsan.onehelper.modification.config.*;
 import dev.sudarsan.onehelper.strategy.CommentStrategy;
 import dev.sudarsan.onehelper.util.ValueCheckerUtil;
-import dev.sudarsan.onehelper.validation.modificationConfigValidators.GitPatchModificationConfigValidator;
-import dev.sudarsan.onehelper.validation.modificationConfigValidators.IntellijConfigModificationConfigValidator;
-import dev.sudarsan.onehelper.validation.modificationConfigValidators.LineBasedModificationConfigValidator;
-import dev.sudarsan.onehelper.validation.modificationConfigValidators.WholeFileModificationConfigValidator;
+import dev.sudarsan.onehelper.validation.modificationConfigValidators.*;
 
 import java.util.List;
 import java.util.Map;
 
 public class RootConfigValidator {
-    private final LineBasedModificationConfigValidator lineConfigValidator;
-    private final WholeFileModificationConfigValidator wholeFileConfigValidator;
-    private final IntellijConfigModificationConfigValidator intellijConfigValidator;
-    private final GitPatchModificationConfigValidator gitPatchConfigValidator;
+    private final ModificationValidatorRegistry validatorRegistry;
 
     public RootConfigValidator(Map<String, CommentStrategy> commentStrategyMap) {
-        lineConfigValidator = new LineBasedModificationConfigValidator(commentStrategyMap);
-        wholeFileConfigValidator = new WholeFileModificationConfigValidator();
-        intellijConfigValidator = new IntellijConfigModificationConfigValidator();
-        gitPatchConfigValidator = new GitPatchModificationConfigValidator();
+        validatorRegistry = new ModificationValidatorRegistry(commentStrategyMap);
     }
 
     public void validateRootConfig(RootConfig rootConfig) throws ValidationException {
@@ -70,16 +61,11 @@ public class RootConfigValidator {
             throw new ValidationException("Modification configuration cannot be null");
         }
 
-        if (modificationConfig instanceof LineBasedModificationConfig){
-            lineConfigValidator.validate((LineBasedModificationConfig) modificationConfig);
-        } else if (modificationConfig instanceof WholeFileModificationConfig) {
-            wholeFileConfigValidator.validate((WholeFileModificationConfig) modificationConfig);
-        } else if (modificationConfig instanceof IntellijIdeConfigModificationConfig) {
-            intellijConfigValidator.validate((IntellijIdeConfigModificationConfig) modificationConfig);
-        } else if (modificationConfig instanceof GitPatchModificationConfig){
-            gitPatchConfigValidator.validate((GitPatchModificationConfig) modificationConfig);
-        } else {
+        ModificationConfigValidator<ModificationConfig> validator = validatorRegistry.getValidator(modificationConfig);
+        if (validator == null){
             throw new ValidationException("Unknown modification config type: " + modificationConfig.getClass().getName());
         }
+
+        validator.validate(modificationConfig);
     }
 }

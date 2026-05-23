@@ -81,7 +81,7 @@ public class LineBasedModification extends FileBasedModification {
     private String applyAction(Action action, String line, String strippedLine) throws ModificationException {
         switch (action.getOperation()) {
             case COMMENT:
-                String commentedLine = commentStrategy.comment(line);
+                String commentedLine = commentStrategy.comment(strippedLine);
                 return line.replace(strippedLine, commentedLine);
             case UPDATE:
                 return line.replace(strippedLine, action.getValue());
@@ -95,7 +95,7 @@ public class LineBasedModification extends FileBasedModification {
         List<Action> actions = change.getActions();
 
         if (actions.size() == 1) {
-            Action action = actions.get(0);
+            Action action = actions.getFirst();
             return applies(action, match.getOccurrence()) ? action : null;
         }
 

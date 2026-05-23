@@ -113,7 +113,7 @@ OneHelper/
                 "actions": [
                   {
                     "operation": "COMMENT",
-                    "occurrences": 2
+                    "occurrences": [2]
                   }
                 ]
               }
