@@ -6,6 +6,7 @@ import dev.sudarsan.onehelper.config.RootConfig;
 import dev.sudarsan.onehelper.config.RuntimeConfig;
 import dev.sudarsan.onehelper.exception.JsonLoadingException;
 import dev.sudarsan.onehelper.strategy.CommentStrategy;
+import dev.sudarsan.onehelper.validation.PathValidator;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -23,19 +24,30 @@ public class RuntimeConfigLoader {
     }
 
     private static Map<String, Integer> loadPortConfigMap(Path resourceDirectory) throws JsonLoadingException {
+        Path portConfigPath = resourceDirectory.resolve("ports.json");
+
+        if (!PathValidator.validateFilePath(portConfigPath)) {
+            Console.warn("⚠️ ports.json not found. Port resolution does not happen. Flow may be interrupted");
+            return Map.of();
+        }
+
         try {
-            Path portConfigPath = resourceDirectory.resolve("ports.json");
-            return mapper.readValue(portConfigPath.toFile(),
-                    new TypeReference<>() {
-                    });
+            return mapper.readValue(portConfigPath.toFile(), new TypeReference<>() {
+            });
         } catch (IOException e) {
             throw new JsonLoadingException("Error loading the file ports.json");
         }
     }
 
     private static Map<String, CommentStrategy> loadCommentStrategyMap(Path resourceDirectory) throws JsonLoadingException {
+        Path commentStrategyPath = resourceDirectory.resolve("comment_strategies.json");
+
+        if (!PathValidator.validateFilePath(commentStrategyPath)) {
+            Console.warn("⚠️ comment_strategies.json not found. Comment operation does not happen. Flow may be interrupted");
+            return Map.of();
+        }
+
         try {
-            Path commentStrategyPath = resourceDirectory.resolve("comment_strategies.json");
             return mapper.readValue(commentStrategyPath.toFile(), new TypeReference<>() {
             });
         } catch (IOException e) {

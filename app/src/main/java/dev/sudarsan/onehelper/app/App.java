@@ -9,6 +9,7 @@ import dev.sudarsan.onehelper.io.Console;
 import dev.sudarsan.onehelper.io.RuntimeConfigLoader;
 import dev.sudarsan.onehelper.io.ToolRootResolver;
 import dev.sudarsan.onehelper.io.UserInputHandler;
+import dev.sudarsan.onehelper.validation.ContextualValidationEngine;
 import dev.sudarsan.onehelper.validation.RuntimeConfigValidator;
 
 import java.nio.file.Path;
@@ -19,7 +20,7 @@ public class App {
             // Resources directory
             Path resourcesDirectory = ToolRootResolver.getResourcesDirectory();
 
-            // Load json
+            // Load JSON
             RuntimeConfig runtimeConfig = RuntimeConfigLoader.loadRuntimeConfig(resourcesDirectory);
 
             // Validate runtimeConfig
@@ -33,6 +34,10 @@ public class App {
 
             // Project context
             ProjectContext context = new ProjectContext(projectRoot, resourcesDirectory);
+
+            // contextual validation
+            ContextualValidationEngine contextualValidationEngine = new ContextualValidationEngine(runtimeConfig.getResolutionInput());
+            contextualValidationEngine.validate(context, runtimeConfig.getRootConfig().getProjects().get(selection.getProject()).getSetups().get(selection.getSetup()));
 
             // Pass to the engine
             Engine engine = new Engine(runtimeConfig);

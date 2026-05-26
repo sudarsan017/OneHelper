@@ -1,13 +1,28 @@
 package dev.sudarsan.onehelper.validation.modificationConfigValidators;
 
+import dev.sudarsan.onehelper.exception.ProcessRunException;
 import dev.sudarsan.onehelper.exception.ValidationException;
 import dev.sudarsan.onehelper.modification.config.GitPatchModificationConfig;
+import dev.sudarsan.onehelper.util.ProcessResult;
+import dev.sudarsan.onehelper.util.ProcessRunner;
 import dev.sudarsan.onehelper.util.ValueCheckerUtil;
 
 public class GitPatchModificationConfigValidator implements ModificationConfigValidator<GitPatchModificationConfig> {
     @Override
     public void validate(GitPatchModificationConfig modificationConfig) throws ValidationException {
         validateSourceFilePath(modificationConfig.getSourcePath());
+        ensureGitAvailable();
+    }
+
+    private void ensureGitAvailable() throws ValidationException {
+        try {
+            ProcessResult result = ProcessRunner.run(null, "git", "--version");
+            if (result.exitCode != 0) {
+                throw new ValidationException("Git command is not available: " + result.output);
+            }
+        } catch (ProcessRunException e) {
+            throw new ValidationException("Error occurred while validating: "+e.getMessage());
+        }
     }
 
     private void validateSourceFilePath(String sourcePath) throws ValidationException {

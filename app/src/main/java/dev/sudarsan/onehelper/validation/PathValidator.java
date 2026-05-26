@@ -29,7 +29,7 @@ public class PathValidator {
         return path;
     }
 
-    public static void validateFilePath(Path path) {
+    public static boolean validateFilePath(Path path) {
         if (!Files.exists(path)) {
             throw new IllegalArgumentException("File '" + path + "' does not exist");
         }
@@ -37,6 +37,8 @@ public class PathValidator {
         if (!Files.isRegularFile(path)) {
             throw new IllegalStateException("Provided path '" + path + "' is supposed to be a file");
         }
+
+        return true;
     }
 
     public static void validateDirectory(Path directory) throws ValidationException {

@@ -1,11 +1,33 @@
 package dev.sudarsan.onehelper.config;
 
+import dev.sudarsan.onehelper.util.ValueCheckerUtil;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.Map;
 import java.util.Set;
 
 public class PortResolver implements ConfigResolver {
+
+    @Override
+    public boolean supports(ResolutionInput input, String config) {
+        Map<String, Integer> ports = input.getPorts();
+        if (ValueCheckerUtil.isNullOrEmpty(ports)){
+            return false;
+        }
+
+        return arePortsNeed(config, ports);
+    }
+
+    private boolean arePortsNeed(String resultantConfig, Map<String, Integer> ports) {
+        for (String portKey : ports.keySet()) {
+            String placeHolder = "{{" + portKey + "}}";
+            if (resultantConfig.contains(placeHolder)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     @Override
     public void resolveConfig(ResolutionInput resolutionInput, Map<String, String> configValueMap) {

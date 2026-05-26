@@ -16,19 +16,17 @@ public class ConfigResolutionPipeline {
     }
 
     public String resolve(String configValue) {
-        String resultantConfig = configValue;
-
-        if (!resultantConfig.contains("{{")) {
-            return resultantConfig;
+        if (!configValue.contains("{{")) {
+            return configValue;
         }
+
+        String resultantConfig = configValue;
 
         Map<String, String> resolvedConfigMap = new HashMap<>();
         for (ConfigResolver resolver : resolvers) {
-            if (resolver instanceof PortResolver && !arePortsNeed(resultantConfig, resolutionInput.getPorts())) {
-                continue;
+            if (resolver.supports(resolutionInput, resultantConfig)) {
+                resolver.resolveConfig(resolutionInput, resolvedConfigMap);
             }
-
-            resolver.resolveConfig(resolutionInput, resolvedConfigMap);
         }
 
         if (resolvedConfigMap.isEmpty()) {
@@ -41,15 +39,5 @@ public class ConfigResolutionPipeline {
         }
 
         return resultantConfig;
-    }
-
-    private boolean arePortsNeed(String resultantConfig, Map<String, Integer> ports) {
-        for (String portKey : ports.keySet()) {
-            String placeHolder = "{{" + portKey + "}}";
-            if (resultantConfig.contains(placeHolder)) {
-                return true;
-            }
-        }
-        return false;
     }
 }

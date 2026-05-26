@@ -1,7 +1,8 @@
-package dev.sudarsan.onehelper.validation.modificationConfigValidators;
+package dev.sudarsan.onehelper.registry;
 
 import dev.sudarsan.onehelper.modification.config.*;
 import dev.sudarsan.onehelper.strategy.CommentStrategy;
+import dev.sudarsan.onehelper.validation.modificationConfigValidators.*;
 
 import java.util.HashMap;
 import java.util.Map;
