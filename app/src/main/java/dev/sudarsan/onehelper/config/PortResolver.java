@@ -1,6 +1,6 @@
 package dev.sudarsan.onehelper.config;
 
-import dev.sudarsan.onehelper.util.ValueCheckerUtil;
+import dev.sudarsan.onehelper.validation.common.ValueValidator;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -12,7 +12,7 @@ public class PortResolver implements ConfigResolver {
     @Override
     public boolean supports(ResolutionInput input, String config) {
         Map<String, Integer> ports = input.getPorts();
-        if (ValueCheckerUtil.isNullOrEmpty(ports)){
+        if (ValueValidator.isNullOrEmpty(ports)){
             return false;
         }
 

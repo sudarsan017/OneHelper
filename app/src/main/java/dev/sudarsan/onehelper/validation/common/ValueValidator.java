@@ -1,10 +1,10 @@
-package dev.sudarsan.onehelper.util;
+package dev.sudarsan.onehelper.validation.common;
 
 import java.util.Collection;
 import java.util.Map;
 
-public class ValueCheckerUtil {
-    private ValueCheckerUtil() {
+public class ValueValidator {
+    private ValueValidator() {
     }
 
     public static boolean isNullOrEmpty(String string) {

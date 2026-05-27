@@ -1,4 +1,4 @@
-package dev.sudarsan.onehelper.validation;
+package dev.sudarsan.onehelper.validation.stateful;
 
 import dev.sudarsan.onehelper.config.ProjectConfig;
 import dev.sudarsan.onehelper.config.RootConfig;
@@ -6,8 +6,8 @@ import dev.sudarsan.onehelper.exception.ValidationException;
 import dev.sudarsan.onehelper.modification.config.*;
 import dev.sudarsan.onehelper.registry.ModificationValidatorRegistry;
 import dev.sudarsan.onehelper.strategy.CommentStrategy;
-import dev.sudarsan.onehelper.util.ValueCheckerUtil;
-import dev.sudarsan.onehelper.validation.modificationConfigValidators.*;
+import dev.sudarsan.onehelper.validation.common.ValueValidator;
+import dev.sudarsan.onehelper.validation.core.StaticValidator;
 
 import java.util.List;
 import java.util.Map;
@@ -28,7 +28,7 @@ public class RootConfigValidator {
     }
 
     private void validateProjectConfigs(RootConfig rootConfig) throws ValidationException {
-        if (ValueCheckerUtil.isNullOrEmpty(rootConfig.getProjects())) {
+        if (ValueValidator.isNullOrEmpty(rootConfig.getProjects())) {
             throw new ValidationException("The configuration file is empty or has no projects defined");
         }
 
@@ -46,7 +46,7 @@ public class RootConfigValidator {
     }
 
     private void validateModificationConfigs(ProjectConfig projectConfig) throws ValidationException {
-        if (ValueCheckerUtil.isNullOrEmpty(projectConfig.getSetups())) {
+        if (ValueValidator.isNullOrEmpty(projectConfig.getSetups())) {
             throw new ValidationException("Project configuration must have at least one setup defined");
         }
 
@@ -62,7 +62,7 @@ public class RootConfigValidator {
             throw new ValidationException("Modification configuration cannot be null");
         }
 
-        ModificationConfigValidator<ModificationConfig> validator = validatorRegistry.getValidator(modificationConfig);
+        StaticValidator<ModificationConfig> validator = validatorRegistry.getValidator(modificationConfig);
         if (validator == null) {
             throw new ValidationException("Unknown modification config type: " + modificationConfig.getClass().getName());
         }

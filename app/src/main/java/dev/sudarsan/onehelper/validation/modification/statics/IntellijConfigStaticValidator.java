@@ -1,13 +1,13 @@
-package dev.sudarsan.onehelper.validation.modificationConfigValidators;
+package dev.sudarsan.onehelper.validation.modification.statics;
 
 import dev.sudarsan.onehelper.config.Configuration;
 import dev.sudarsan.onehelper.exception.ValidationException;
 import dev.sudarsan.onehelper.modification.config.IntellijIdeConfigModificationConfig;
-import dev.sudarsan.onehelper.util.ValueCheckerUtil;
+import dev.sudarsan.onehelper.validation.common.ValueValidator;
 
 import java.util.List;
 
-public class IntellijConfigModificationConfigValidator extends FileBasedModificationConfigValidator<IntellijIdeConfigModificationConfig> {
+public class IntellijConfigStaticValidator extends FileBasedStaticValidator<IntellijIdeConfigModificationConfig> {
     @Override
     public void validate(IntellijIdeConfigModificationConfig modificationConfig) throws ValidationException {
         validateFilePath(modificationConfig);
@@ -15,12 +15,12 @@ public class IntellijConfigModificationConfigValidator extends FileBasedModifica
     }
 
     private void validateConfigurations(List<Configuration> configurations) throws ValidationException {
-        if (ValueCheckerUtil.isNullOrEmpty(configurations)) {
+        if (ValueValidator.isNullOrEmpty(configurations)) {
             throw new ValidationException("Configurations cannot be null or empty");
         }
 
         for (Configuration configuration : configurations) {
-            if (ValueCheckerUtil.isNullOrEmpty(configuration.getTemplatePath())) {
+            if (ValueValidator.isNullOrEmpty(configuration.getTemplatePath())) {
                 throw new ValidationException("Template path is null or empty");
             }
         }

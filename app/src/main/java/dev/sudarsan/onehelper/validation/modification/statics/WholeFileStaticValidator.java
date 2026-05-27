@@ -1,10 +1,10 @@
-package dev.sudarsan.onehelper.validation.modificationConfigValidators;
+package dev.sudarsan.onehelper.validation.modification.statics;
 
 import dev.sudarsan.onehelper.exception.ValidationException;
 import dev.sudarsan.onehelper.modification.config.WholeFileModificationConfig;
-import dev.sudarsan.onehelper.util.ValueCheckerUtil;
+import dev.sudarsan.onehelper.validation.common.ValueValidator;
 
-public class WholeFileModificationConfigValidator extends FileBasedModificationConfigValidator<WholeFileModificationConfig> {
+public class WholeFileStaticValidator extends FileBasedStaticValidator<WholeFileModificationConfig> {
     @Override
     public void validate(WholeFileModificationConfig modificationConfig) throws ValidationException {
         validateFilePath(modificationConfig);
@@ -12,7 +12,7 @@ public class WholeFileModificationConfigValidator extends FileBasedModificationC
     }
 
     private void validateSourceFilePath(String sourcePath) throws ValidationException {
-        if (ValueCheckerUtil.isNullOrEmpty(sourcePath)) {
+        if (ValueValidator.isNullOrEmpty(sourcePath)) {
             throw new ValidationException("Source path cannot be null or empty");
         }
     }

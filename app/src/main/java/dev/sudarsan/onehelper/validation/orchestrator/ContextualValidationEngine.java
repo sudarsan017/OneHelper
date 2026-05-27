@@ -1,11 +1,11 @@
-package dev.sudarsan.onehelper.validation;
+package dev.sudarsan.onehelper.validation.orchestrator;
 
 import dev.sudarsan.onehelper.config.ResolutionInput;
 import dev.sudarsan.onehelper.context.ProjectContext;
 import dev.sudarsan.onehelper.exception.ValidationException;
 import dev.sudarsan.onehelper.modification.config.ModificationConfig;
 import dev.sudarsan.onehelper.registry.ContextualValidatorRegistry;
-import dev.sudarsan.onehelper.validation.contextual.ContextualValidator;
+import dev.sudarsan.onehelper.validation.core.ContextualValidator;
 
 import java.util.List;
 

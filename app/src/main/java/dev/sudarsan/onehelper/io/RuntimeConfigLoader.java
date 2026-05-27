@@ -6,7 +6,7 @@ import dev.sudarsan.onehelper.config.RootConfig;
 import dev.sudarsan.onehelper.config.RuntimeConfig;
 import dev.sudarsan.onehelper.exception.JsonLoadingException;
 import dev.sudarsan.onehelper.strategy.CommentStrategy;
-import dev.sudarsan.onehelper.validation.PathValidator;
+import dev.sudarsan.onehelper.validation.common.PathValidator;
 
 import java.io.IOException;
 import java.nio.file.Path;

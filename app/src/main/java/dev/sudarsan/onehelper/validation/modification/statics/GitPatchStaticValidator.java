@@ -1,13 +1,14 @@
-package dev.sudarsan.onehelper.validation.modificationConfigValidators;
+package dev.sudarsan.onehelper.validation.modification.statics;
 
 import dev.sudarsan.onehelper.exception.ProcessRunException;
 import dev.sudarsan.onehelper.exception.ValidationException;
 import dev.sudarsan.onehelper.modification.config.GitPatchModificationConfig;
 import dev.sudarsan.onehelper.util.ProcessResult;
 import dev.sudarsan.onehelper.util.ProcessRunner;
-import dev.sudarsan.onehelper.util.ValueCheckerUtil;
+import dev.sudarsan.onehelper.validation.common.ValueValidator;
+import dev.sudarsan.onehelper.validation.core.StaticValidator;
 
-public class GitPatchModificationConfigValidator implements ModificationConfigValidator<GitPatchModificationConfig> {
+public class GitPatchStaticValidator implements StaticValidator<GitPatchModificationConfig> {
     @Override
     public void validate(GitPatchModificationConfig modificationConfig) throws ValidationException {
         validateSourceFilePath(modificationConfig.getSourcePath());
@@ -26,7 +27,7 @@ public class GitPatchModificationConfigValidator implements ModificationConfigVa
     }
 
     private void validateSourceFilePath(String sourcePath) throws ValidationException {
-        if (ValueCheckerUtil.isNullOrEmpty(sourcePath)) {
+        if (ValueValidator.isNullOrEmpty(sourcePath)) {
             throw new ValidationException("Source path cannot be null or empty");
         }
 

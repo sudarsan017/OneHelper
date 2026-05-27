@@ -9,8 +9,8 @@ import dev.sudarsan.onehelper.io.Console;
 import dev.sudarsan.onehelper.io.RuntimeConfigLoader;
 import dev.sudarsan.onehelper.io.ToolRootResolver;
 import dev.sudarsan.onehelper.io.UserInputHandler;
-import dev.sudarsan.onehelper.validation.ContextualValidationEngine;
-import dev.sudarsan.onehelper.validation.RuntimeConfigValidator;
+import dev.sudarsan.onehelper.validation.orchestrator.ContextualValidationEngine;
+import dev.sudarsan.onehelper.validation.common.RuntimeConfigValidator;
 
 import java.nio.file.Path;
 

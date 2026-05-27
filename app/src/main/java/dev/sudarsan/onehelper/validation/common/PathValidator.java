@@ -1,7 +1,6 @@
-package dev.sudarsan.onehelper.validation;
+package dev.sudarsan.onehelper.validation.common;
 
 import dev.sudarsan.onehelper.exception.ValidationException;
-import dev.sudarsan.onehelper.util.ValueCheckerUtil;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,7 +10,7 @@ public class PathValidator {
     }
 
     public static Path validateDirectoryPath(String path) throws ValidationException {
-        if (ValueCheckerUtil.isNullOrEmpty(path)) {
+        if (ValueValidator.isNullOrEmpty(path)) {
             throw new ValidationException("Path cannot be null or empty");
         }
         String strippedPath = stripQuotes(path);

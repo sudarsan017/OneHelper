@@ -1,7 +1,8 @@
-package dev.sudarsan.onehelper.validation;
+package dev.sudarsan.onehelper.validation.common;
 
 import dev.sudarsan.onehelper.config.RuntimeConfig;
 import dev.sudarsan.onehelper.exception.ValidationException;
+import dev.sudarsan.onehelper.validation.stateful.RootConfigValidator;
 
 public class RuntimeConfigValidator {
     private RuntimeConfigValidator() {

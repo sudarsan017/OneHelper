@@ -1,4 +1,4 @@
-package dev.sudarsan.onehelper.validation.modificationConfigValidators;
+package dev.sudarsan.onehelper.validation.modification.statics;
 
 import dev.sudarsan.onehelper.config.Action;
 import dev.sudarsan.onehelper.config.LineChange;
@@ -6,15 +6,15 @@ import dev.sudarsan.onehelper.config.Operation;
 import dev.sudarsan.onehelper.exception.ValidationException;
 import dev.sudarsan.onehelper.modification.config.LineBasedModificationConfig;
 import dev.sudarsan.onehelper.strategy.CommentStrategy;
-import dev.sudarsan.onehelper.util.ValueCheckerUtil;
+import dev.sudarsan.onehelper.validation.common.ValueValidator;
 
 import java.util.List;
 import java.util.Map;
 
-public class LineBasedModificationConfigValidator extends FileBasedModificationConfigValidator<LineBasedModificationConfig> {
+public class LineBasedStaticValidator extends FileBasedStaticValidator<LineBasedModificationConfig> {
     private final Map<String, CommentStrategy> commentStrategyMap;
 
-    public LineBasedModificationConfigValidator(Map<String, CommentStrategy> commentStrategyMap) {
+    public LineBasedStaticValidator(Map<String, CommentStrategy> commentStrategyMap) {
         this.commentStrategyMap = commentStrategyMap;
     }
 
@@ -58,7 +58,7 @@ public class LineBasedModificationConfigValidator extends FileBasedModificationC
     }
 
     private void validateChanges(List<LineChange> changes) throws ValidationException {
-        if (ValueCheckerUtil.isNullOrEmpty(changes)) {
+        if (ValueValidator.isNullOrEmpty(changes)) {
             throw new ValidationException("Changes list cannot be null or empty");
         }
 
@@ -73,7 +73,7 @@ public class LineBasedModificationConfigValidator extends FileBasedModificationC
         }
 
         // target check
-        if (ValueCheckerUtil.isNullOrEmpty(change.getTarget())) {
+        if (ValueValidator.isNullOrEmpty(change.getTarget())) {
             throw new ValidationException("Target line cannot be null or empty");
         }
 
@@ -82,7 +82,7 @@ public class LineBasedModificationConfigValidator extends FileBasedModificationC
     }
 
     private void validateActions(List<Action> actions) throws ValidationException {
-        if (ValueCheckerUtil.isNullOrEmpty(actions)) {
+        if (ValueValidator.isNullOrEmpty(actions)) {
             throw new ValidationException("Actions list cannot be null or empty");
         }
 
@@ -115,7 +115,7 @@ public class LineBasedModificationConfigValidator extends FileBasedModificationC
 
     private void validateActionAndOccurrences(Action action, int actionsSize) throws ValidationException {
         // if there are multiple actions, then occurrences cannot be null or empty in any action
-        if (ValueCheckerUtil.isNullOrEmpty(action.getOccurrences())) {
+        if (ValueValidator.isNullOrEmpty(action.getOccurrences())) {
             if (actionsSize > 1) {
                 throw new ValidationException("Occurrence cannot be null or empty in action when there are multiple actions");
             }

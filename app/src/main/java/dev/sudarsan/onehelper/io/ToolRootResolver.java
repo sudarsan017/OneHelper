@@ -1,7 +1,7 @@
 package dev.sudarsan.onehelper.io;
 
 import dev.sudarsan.onehelper.exception.ValidationException;
-import dev.sudarsan.onehelper.validation.PathValidator;
+import dev.sudarsan.onehelper.validation.common.PathValidator;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

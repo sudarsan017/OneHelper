@@ -1,4 +1,4 @@
-package dev.sudarsan.onehelper.validation.contextual;
+package dev.sudarsan.onehelper.validation.modification.contextual;
 
 import dev.sudarsan.onehelper.config.ConfigResolutionPipeline;
 import dev.sudarsan.onehelper.config.Configuration;
@@ -6,15 +6,16 @@ import dev.sudarsan.onehelper.config.ResolutionInput;
 import dev.sudarsan.onehelper.context.ProjectContext;
 import dev.sudarsan.onehelper.exception.ValidationException;
 import dev.sudarsan.onehelper.modification.config.IntellijIdeConfigModificationConfig;
+import dev.sudarsan.onehelper.validation.core.ContextualValidator;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class IntellijValidator implements ContextualValidator<IntellijIdeConfigModificationConfig> {
+public class IntellijConfigContextValidator implements ContextualValidator<IntellijIdeConfigModificationConfig> {
     private final ResolutionInput resolutionInput;
 
-    public IntellijValidator(ResolutionInput resolutionInput){
+    public IntellijConfigContextValidator(ResolutionInput resolutionInput){
         this.resolutionInput = resolutionInput;
     }
 

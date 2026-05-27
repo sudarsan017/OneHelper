@@ -1,6 +1,6 @@
 package dev.sudarsan.onehelper.context;
 
-import dev.sudarsan.onehelper.validation.PathValidator;
+import dev.sudarsan.onehelper.validation.common.PathValidator;
 
 import java.nio.file.Path;
 

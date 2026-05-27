@@ -1,4 +1,4 @@
-package dev.sudarsan.onehelper.validation.contextual;
+package dev.sudarsan.onehelper.validation.modification.contextual;
 
 import dev.sudarsan.onehelper.context.ProjectContext;
 import dev.sudarsan.onehelper.exception.ProcessRunException;
@@ -6,11 +6,12 @@ import dev.sudarsan.onehelper.exception.ValidationException;
 import dev.sudarsan.onehelper.modification.config.GitPatchModificationConfig;
 import dev.sudarsan.onehelper.util.ProcessResult;
 import dev.sudarsan.onehelper.util.ProcessRunner;
+import dev.sudarsan.onehelper.validation.core.ContextualValidator;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class GitValidator implements ContextualValidator<GitPatchModificationConfig> {
+public class GitPatchContextValidator implements ContextualValidator<GitPatchModificationConfig> {
     @Override
     public void validate(ProjectContext context, GitPatchModificationConfig modificationConfig) throws ValidationException {
         try{

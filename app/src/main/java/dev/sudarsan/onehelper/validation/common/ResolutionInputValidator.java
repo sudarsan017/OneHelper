@@ -1,4 +1,4 @@
-package dev.sudarsan.onehelper.validation;
+package dev.sudarsan.onehelper.validation.common;
 
 import dev.sudarsan.onehelper.config.ResolutionInput;
 import dev.sudarsan.onehelper.exception.ValidationException;

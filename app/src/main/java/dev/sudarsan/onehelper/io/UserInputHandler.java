@@ -4,8 +4,8 @@ import dev.sudarsan.onehelper.app.UserSelection;
 import dev.sudarsan.onehelper.config.RootConfig;
 import dev.sudarsan.onehelper.exception.InvalidOptionException;
 import dev.sudarsan.onehelper.exception.ValidationException;
-import dev.sudarsan.onehelper.util.ValueCheckerUtil;
-import dev.sudarsan.onehelper.validation.PathValidator;
+import dev.sudarsan.onehelper.validation.common.ValueValidator;
+import dev.sudarsan.onehelper.validation.common.PathValidator;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -68,7 +68,7 @@ public class UserInputHandler {
     private static String getSelectionFromArgsOrList(String[] args, int index, String item, List<String> list) {
         if (index < args.length) {
             String value = args[index];
-            if (!ValueCheckerUtil.isNullOrEmpty(value) && list.contains(value)) {
+            if (!ValueValidator.isNullOrEmpty(value) && list.contains(value)) {
                 return value;
             }
         }

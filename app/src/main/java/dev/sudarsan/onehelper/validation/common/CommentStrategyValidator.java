@@ -1,8 +1,7 @@
-package dev.sudarsan.onehelper.validation;
+package dev.sudarsan.onehelper.validation.common;
 
 import dev.sudarsan.onehelper.exception.ValidationException;
 import dev.sudarsan.onehelper.strategy.CommentStrategy;
-import dev.sudarsan.onehelper.util.ValueCheckerUtil;
 
 import java.util.Map;
 
@@ -23,7 +22,7 @@ public class CommentStrategyValidator {
             throw new ValidationException("There is no comment Strategy given for the file type: " + entry.getKey());
         }
 
-        if (ValueCheckerUtil.isNullOrEmpty(commentStrategy.getPrefix())) {
+        if (ValueValidator.isNullOrEmpty(commentStrategy.getPrefix())) {
             throw new ValidationException("Prefix cannot be null for the comment strategy");
         }
     }
