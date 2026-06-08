@@ -1,4 +1,6 @@
-package dev.sudarsan.onehelper.config;
+package dev.sudarsan.onehelper.config.resolution.resolver;
+
+import dev.sudarsan.onehelper.config.resolution.input.ResolutionInput;
 
 import java.util.Map;
 

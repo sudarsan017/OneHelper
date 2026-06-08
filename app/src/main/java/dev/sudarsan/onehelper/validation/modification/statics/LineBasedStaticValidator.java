@@ -1,8 +1,8 @@
 package dev.sudarsan.onehelper.validation.modification.statics;
 
-import dev.sudarsan.onehelper.config.Action;
-import dev.sudarsan.onehelper.config.LineChange;
-import dev.sudarsan.onehelper.config.Operation;
+import dev.sudarsan.onehelper.config.modification.action.Action;
+import dev.sudarsan.onehelper.config.modification.LineChange;
+import dev.sudarsan.onehelper.config.modification.action.Operation;
 import dev.sudarsan.onehelper.exception.ValidationException;
 import dev.sudarsan.onehelper.modification.config.LineBasedModificationConfig;
 import dev.sudarsan.onehelper.strategy.CommentStrategy;

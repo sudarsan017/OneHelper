@@ -1,10 +1,10 @@
 package dev.sudarsan.onehelper.modification.runtime;
 
-import dev.sudarsan.onehelper.config.Configuration;
-import dev.sudarsan.onehelper.config.ResolutionInput;
+import dev.sudarsan.onehelper.config.model.Configuration;
+import dev.sudarsan.onehelper.config.resolution.input.ResolutionInput;
 import dev.sudarsan.onehelper.context.ProjectContext;
 import dev.sudarsan.onehelper.exception.ModificationException;
-import dev.sudarsan.onehelper.config.ConfigResolutionPipeline;
+import dev.sudarsan.onehelper.config.resolution.pipeline.ConfigResolutionPipeline;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

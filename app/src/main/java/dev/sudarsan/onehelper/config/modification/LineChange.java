@@ -1,4 +1,6 @@
-package dev.sudarsan.onehelper.config;
+package dev.sudarsan.onehelper.config.modification;
+
+import dev.sudarsan.onehelper.config.modification.action.Action;
 
 import java.util.List;
 

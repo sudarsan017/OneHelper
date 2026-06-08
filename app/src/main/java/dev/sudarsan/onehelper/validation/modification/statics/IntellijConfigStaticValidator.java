@@ -1,6 +1,6 @@
 package dev.sudarsan.onehelper.validation.modification.statics;
 
-import dev.sudarsan.onehelper.config.Configuration;
+import dev.sudarsan.onehelper.config.model.Configuration;
 import dev.sudarsan.onehelper.exception.ValidationException;
 import dev.sudarsan.onehelper.modification.config.IntellijIdeConfigModificationConfig;
 import dev.sudarsan.onehelper.validation.common.ValueValidator;

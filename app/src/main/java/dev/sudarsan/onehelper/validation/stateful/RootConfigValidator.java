@@ -1,7 +1,7 @@
 package dev.sudarsan.onehelper.validation.stateful;
 
-import dev.sudarsan.onehelper.config.ProjectConfig;
-import dev.sudarsan.onehelper.config.RootConfig;
+import dev.sudarsan.onehelper.config.model.ProjectConfig;
+import dev.sudarsan.onehelper.config.model.RootConfig;
 import dev.sudarsan.onehelper.exception.ValidationException;
 import dev.sudarsan.onehelper.modification.config.*;
 import dev.sudarsan.onehelper.registry.ModificationValidatorRegistry;

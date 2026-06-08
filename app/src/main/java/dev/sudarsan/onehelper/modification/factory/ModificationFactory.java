@@ -1,6 +1,7 @@
 package dev.sudarsan.onehelper.modification.factory;
 
-import dev.sudarsan.onehelper.config.ResolutionInput;
+import dev.sudarsan.onehelper.config.model.Configuration;
+import dev.sudarsan.onehelper.config.resolution.input.ResolutionInput;
 import dev.sudarsan.onehelper.exception.ModificationException;
 import dev.sudarsan.onehelper.modification.config.*;
 import dev.sudarsan.onehelper.modification.runtime.*;
@@ -49,7 +50,9 @@ public class ModificationFactory {
 
     private Modification getIntellijConfigModification(ModificationConfig modificationConfig) throws ModificationException {
         IntellijIdeConfigModificationConfig intellijIdeConfigModificationConfig = (IntellijIdeConfigModificationConfig) modificationConfig;
-        return new IntellijIdeConfigModification(intellijIdeConfigModificationConfig.getFilePath(), resolutionInput, intellijIdeConfigModificationConfig.getConfigurations());
+        List<Configuration> enabledConfigurations = intellijIdeConfigModificationConfig.getConfigurations().stream().filter(Configuration::isEnabled).toList();
+
+        return new IntellijIdeConfigModification(intellijIdeConfigModificationConfig.getFilePath(), resolutionInput, enabledConfigurations);
     }
 
     private Modification getGitPatchModification(ModificationConfig modificationConfig) {

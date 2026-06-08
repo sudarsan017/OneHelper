@@ -1,7 +1,7 @@
 package dev.sudarsan.onehelper.io;
 
 import dev.sudarsan.onehelper.app.UserSelection;
-import dev.sudarsan.onehelper.config.RootConfig;
+import dev.sudarsan.onehelper.config.model.RootConfig;
 import dev.sudarsan.onehelper.exception.InvalidOptionException;
 import dev.sudarsan.onehelper.exception.ValidationException;
 import dev.sudarsan.onehelper.validation.common.ValueValidator;

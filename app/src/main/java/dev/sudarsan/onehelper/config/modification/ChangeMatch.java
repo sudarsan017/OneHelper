@@ -1,4 +1,4 @@
-package dev.sudarsan.onehelper.config;
+package dev.sudarsan.onehelper.config.modification;
 
 public class ChangeMatch {
     private final int occurrence;

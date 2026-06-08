@@ -1,4 +1,4 @@
-package dev.sudarsan.onehelper.config;
+package dev.sudarsan.onehelper.config.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

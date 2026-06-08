@@ -2,7 +2,7 @@ package dev.sudarsan.onehelper.modification.config;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.sudarsan.onehelper.config.Configuration;
+import dev.sudarsan.onehelper.config.model.Configuration;
 
 import java.util.List;
 

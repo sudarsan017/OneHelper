@@ -1,5 +1,7 @@
-package dev.sudarsan.onehelper.config;
+package dev.sudarsan.onehelper.config.resolution.resolver.impl;
 
+import dev.sudarsan.onehelper.config.resolution.input.ResolutionInput;
+import dev.sudarsan.onehelper.config.resolution.resolver.ConfigResolver;
 import dev.sudarsan.onehelper.validation.common.ValueValidator;
 
 import java.io.IOException;
@@ -41,11 +43,21 @@ public class PortResolver implements ConfigResolver {
     }
 
     private int resolvePort(Set<Integer> usedPorts, int desiredPort) {
-        while (!isPortAvailable(usedPorts, desiredPort) && desiredPort < 65535) {
-            desiredPort++;
+        for (int port = desiredPort;port < 65535; port++){
+            if (isPortAvailable(usedPorts, port)){
+                usedPorts.add(port);
+                return port;
+            }
         }
-        usedPorts.add(desiredPort);
-        return desiredPort;
+
+        for (int port = 1024;port < desiredPort;port++){
+            if (isPortAvailable(usedPorts, port)){
+                usedPorts.add(port);
+                return port;
+            }
+        }
+
+        throw new RuntimeException("No ports available");
     }
 
     private boolean isPortAvailable(Set<Integer> usedPorts, int desiredPort) {

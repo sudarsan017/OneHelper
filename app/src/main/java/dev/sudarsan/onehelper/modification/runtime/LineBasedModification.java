@@ -2,9 +2,9 @@ package dev.sudarsan.onehelper.modification.runtime;
 
 import dev.sudarsan.onehelper.context.ProjectContext;
 import dev.sudarsan.onehelper.exception.ModificationException;
-import dev.sudarsan.onehelper.config.Action;
-import dev.sudarsan.onehelper.config.ChangeMatch;
-import dev.sudarsan.onehelper.config.LineChange;
+import dev.sudarsan.onehelper.config.modification.action.Action;
+import dev.sudarsan.onehelper.config.modification.ChangeMatch;
+import dev.sudarsan.onehelper.config.modification.LineChange;
 import dev.sudarsan.onehelper.strategy.CommentStrategy;
 
 import java.io.IOException;

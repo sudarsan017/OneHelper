@@ -1,6 +1,6 @@
 package dev.sudarsan.onehelper.app;
 
-import dev.sudarsan.onehelper.config.RuntimeConfig;
+import dev.sudarsan.onehelper.config.model.RuntimeConfig;
 import dev.sudarsan.onehelper.context.ProjectContext;
 import dev.sudarsan.onehelper.exception.ModificationException;
 import dev.sudarsan.onehelper.io.Console;

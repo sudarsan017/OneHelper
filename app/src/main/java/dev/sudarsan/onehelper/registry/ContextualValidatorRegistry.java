@@ -1,6 +1,6 @@
 package dev.sudarsan.onehelper.registry;
 
-import dev.sudarsan.onehelper.config.ResolutionInput;
+import dev.sudarsan.onehelper.config.resolution.input.ResolutionInput;
 import dev.sudarsan.onehelper.modification.config.*;
 import dev.sudarsan.onehelper.validation.core.ContextualValidator;
 import dev.sudarsan.onehelper.validation.modification.contextual.GitPatchContextValidator;

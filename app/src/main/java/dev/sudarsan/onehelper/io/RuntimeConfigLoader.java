@@ -2,8 +2,8 @@ package dev.sudarsan.onehelper.io;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.sudarsan.onehelper.config.RootConfig;
-import dev.sudarsan.onehelper.config.RuntimeConfig;
+import dev.sudarsan.onehelper.config.model.RootConfig;
+import dev.sudarsan.onehelper.config.model.RuntimeConfig;
 import dev.sudarsan.onehelper.exception.JsonLoadingException;
 import dev.sudarsan.onehelper.strategy.CommentStrategy;
 import dev.sudarsan.onehelper.validation.common.PathValidator;

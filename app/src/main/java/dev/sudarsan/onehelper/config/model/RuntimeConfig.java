@@ -1,5 +1,6 @@
-package dev.sudarsan.onehelper.config;
+package dev.sudarsan.onehelper.config.model;
 
+import dev.sudarsan.onehelper.config.resolution.input.ResolutionInput;
 import dev.sudarsan.onehelper.strategy.CommentStrategy;
 
 import java.util.Map;

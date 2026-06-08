@@ -1,6 +1,6 @@
 package dev.sudarsan.onehelper.validation.common;
 
-import dev.sudarsan.onehelper.config.ResolutionInput;
+import dev.sudarsan.onehelper.config.resolution.input.ResolutionInput;
 import dev.sudarsan.onehelper.exception.ValidationException;
 
 public class ResolutionInputValidator {

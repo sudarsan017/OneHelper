@@ -1,4 +1,4 @@
-package dev.sudarsan.onehelper.config;
+package dev.sudarsan.onehelper.config.resolution.input;
 
 import java.util.HashSet;
 import java.util.Map;

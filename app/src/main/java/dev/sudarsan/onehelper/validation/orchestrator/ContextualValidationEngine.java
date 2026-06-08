@@ -1,6 +1,6 @@
 package dev.sudarsan.onehelper.validation.orchestrator;
 
-import dev.sudarsan.onehelper.config.ResolutionInput;
+import dev.sudarsan.onehelper.config.resolution.input.ResolutionInput;
 import dev.sudarsan.onehelper.context.ProjectContext;
 import dev.sudarsan.onehelper.exception.ValidationException;
 import dev.sudarsan.onehelper.modification.config.ModificationConfig;

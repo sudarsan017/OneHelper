@@ -1,4 +1,4 @@
-package dev.sudarsan.onehelper.config;
+package dev.sudarsan.onehelper.config.modification.action;
 
 import java.util.Set;
 
@@ -11,23 +11,11 @@ public class Action {
         return operation;
     }
 
-    public void setOperation(Operation operation) {
-        this.operation = operation;
-    }
-
     public String getValue() {
         return value;
     }
 
-    public void setValue(String value) {
-        this.value = value;
-    }
-
     public Set<Integer> getOccurrences() {
         return occurrences;
-    }
-
-    public void setOccurrences(Set<Integer> occurrences) {
-        this.occurrences = occurrences;
     }
 }
