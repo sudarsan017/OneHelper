@@ -5,15 +5,23 @@ public class Console {
         System.out.println(ConsoleColors.GREEN + message + ConsoleColors.RESET);
     }
 
+    private static void printMessage(String message, String color) {
+        System.out.println("\n" + color + message + ConsoleColors.RESET);
+    }
+
     public static void error(String message) {
-        System.out.println(ConsoleColors.RED + message + ConsoleColors.RESET);
+        printMessage(message, ConsoleColors.RED);
     }
 
     public static void warn(String message) {
-        System.out.println(ConsoleColors.YELLOW + message + ConsoleColors.RESET);
+        printMessage(message, ConsoleColors.YELLOW);
     }
 
     public static void info(String message) {
-        System.out.println(ConsoleColors.CYAN + message + ConsoleColors.RESET);
+        printMessage(message, ConsoleColors.CYAN);
+    }
+
+    public static void ask(String message) {
+        System.out.print("\n" + ConsoleColors.BLUE + message + ConsoleColors.RESET);
     }
 }

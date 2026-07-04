@@ -14,7 +14,7 @@ public class PortResolver implements ConfigResolver {
     @Override
     public boolean supports(ResolutionInput input, String config) {
         Map<String, Integer> ports = input.getPorts();
-        if (ValueValidator.isNullOrEmpty(ports)){
+        if (ValueValidator.isNullOrEmpty(ports)) {
             return false;
         }
 
@@ -43,15 +43,15 @@ public class PortResolver implements ConfigResolver {
     }
 
     private int resolvePort(Set<Integer> usedPorts, int desiredPort) {
-        for (int port = desiredPort;port < 65535; port++){
-            if (isPortAvailable(usedPorts, port)){
+        for (int port = desiredPort; port < 65535; port++) {
+            if (isPortAvailable(usedPorts, port)) {
                 usedPorts.add(port);
                 return port;
             }
         }
 
-        for (int port = 1024;port < desiredPort;port++){
-            if (isPortAvailable(usedPorts, port)){
+        for (int port = 1024; port < desiredPort; port++) {
+            if (isPortAvailable(usedPorts, port)) {
                 usedPorts.add(port);
                 return port;
             }

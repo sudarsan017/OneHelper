@@ -52,7 +52,7 @@ public class IntellijIdeConfigModification extends IdeConfigModification {
         try {
             addElements(context, elements);
 
-            Path targetFile = context.resolveProjectFile(filePath);
+            Path targetFile = context.getProjectRoot().resolve(filePath);
 
             Document targetDoc = getTargetDoc(targetFile);
             Element runManagerComponent = findOrCreateRunManager(targetDoc);
@@ -69,12 +69,18 @@ public class IntellijIdeConfigModification extends IdeConfigModification {
             throw new ModificationException("Error parsing the xml file: " + e.getMessage());
         } catch (TransformerException e) {
             throw new ModificationException("Error writing the xml file: " + e.getMessage());
-        } catch (Exception e) {
+        } /*catch (Exception e) {
             throw new ModificationException("Unexpected error: " + e.getMessage());
-        }
+        }*/
     }
 
-    private void writeXmlRootToFile(Document targetDoc, Path targetFile) throws TransformerException {
+    private void writeXmlRootToFile(Document targetDoc, Path targetFile) throws TransformerException, IOException {
+        try {
+            Files.createDirectories(targetFile.getParent());
+        } catch (IOException e) {
+            throw new IOException("Error creating the directories for the target file (" + targetFile + "): " + e.getMessage());
+        }
+
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
@@ -105,17 +111,20 @@ public class IntellijIdeConfigModification extends IdeConfigModification {
         return runManagerComponent;
     }
 
-    private Document getTargetDoc(Path targetFile) {
-        Document targetDoc;
-        if (!targetFile.toFile().exists()) {
-            targetDoc = documentBuilder.newDocument();
+    private Document getTargetDoc(Path targetFile)
+            throws IOException, SAXException {
+
+        if (!Files.exists(targetFile)) {
+            Document targetDoc = documentBuilder.newDocument();
+
             Element project = targetDoc.createElement("project");
             project.setAttribute("version", "4");
             targetDoc.appendChild(project);
-        } else {
-            targetDoc = documentBuilder.newDocument();
+
+            return targetDoc;
         }
-        return targetDoc;
+
+        return documentBuilder.parse(targetFile.toFile());
     }
 
     private void addElements(ProjectContext context, List<Element> elements) throws ModificationException, IOException, SAXException {

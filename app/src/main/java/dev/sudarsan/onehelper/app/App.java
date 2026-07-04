@@ -15,7 +15,21 @@ import dev.sudarsan.onehelper.validation.common.RuntimeConfigValidator;
 import java.nio.file.Path;
 
 public class App {
+    private static final String WELCOME_MESSAGE = """
+            \n============================================================
+                                     OneHelper
+                          Local Setup Automation Assistant
+            ============================================================
+            Automate your local project setup in just a few steps.
+            
+            ✔ Configure your workspace
+            ✔ Apply project-specific changes
+            ✔ Start coding faster
+            
+            Let's begin!
+            """;
     public static void start(String[] args) {
+        System.out.println(WELCOME_MESSAGE);
         try {
             // Resources directory
             Path resourcesDirectory = ToolRootResolver.getResourcesDirectory();
@@ -48,8 +62,8 @@ public class App {
             Console.error("Modification failed:" + e.getMessage());
         } catch (JsonLoadingException e) {
             Console.error("Failed to load Json Configuration: " + e.getMessage());
-        } catch (Exception e) {
+        } /*catch (Exception e) {
             Console.error("Unexpected error: " + e.getMessage());
-        }
+        }*/
     }
 }

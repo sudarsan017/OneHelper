@@ -14,7 +14,7 @@ import java.util.Map;
 public class ContextualValidatorRegistry {
     private final Map<Class<?>, ContextualValidator<?>> registry = new HashMap<>();
 
-    public ContextualValidatorRegistry(ResolutionInput resolutionInput){
+    public ContextualValidatorRegistry(ResolutionInput resolutionInput) {
         registry.put(LineBasedModificationConfig.class, new LineBasedContextValidator());
         registry.put(WholeFileModificationConfig.class, new WholeFileContextValidator());
         registry.put(IntellijIdeConfigModificationConfig.class, new IntellijConfigContextValidator(resolutionInput));
@@ -22,7 +22,7 @@ public class ContextualValidatorRegistry {
     }
 
     @SuppressWarnings("unchecked")
-    public <T extends ModificationConfig> ContextualValidator<T> getValidator(T config){
+    public <T extends ModificationConfig> ContextualValidator<T> getValidator(T config) {
         return (ContextualValidator<T>) registry.get(config.getClass());
     }
 

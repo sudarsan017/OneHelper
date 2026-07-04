@@ -12,15 +12,15 @@ import java.util.List;
 public class ContextualValidationEngine {
     private final ContextualValidatorRegistry registry;
 
-    public ContextualValidationEngine(ResolutionInput input){
+    public ContextualValidationEngine(ResolutionInput input) {
         registry = new ContextualValidatorRegistry(input);
     }
 
     public void validate(ProjectContext context, List<ModificationConfig> modificationConfigs) throws ValidationException {
-        for (ModificationConfig config:modificationConfigs){
+        for (ModificationConfig config : modificationConfigs) {
             ContextualValidator<ModificationConfig> validator = registry.getValidator(config);
-            if (validator == null){
-                throw new ValidationException("Unsupported modification config type: "+config.getClass().getName());
+            if (validator == null) {
+                throw new ValidationException("Unsupported modification config type: " + config.getClass().getName());
             }
 
             validator.validate(context, config);

@@ -30,7 +30,7 @@ public class GitPatchModification implements Modification {
                 throw new ModificationException("Failed to apply patch file " + sourcePatchFile + " to target directory " + targetDirectory + ":\n" + result.output);
             }
         } catch (ProcessRunException e) {
-            throw new ModificationException("Error applying the patch: "+e.getMessage());
+            throw new ModificationException("Error applying the patch: " + e.getMessage());
         }
     }
 }

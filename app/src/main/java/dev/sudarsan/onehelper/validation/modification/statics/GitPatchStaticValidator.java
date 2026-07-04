@@ -22,7 +22,7 @@ public class GitPatchStaticValidator implements StaticValidator<GitPatchModifica
                 throw new ValidationException("Git command is not available: " + result.output);
             }
         } catch (ProcessRunException e) {
-            throw new ValidationException("Error occurred while validating: "+e.getMessage());
+            throw new ValidationException("Error occurred while validating: " + e.getMessage());
         }
     }
 

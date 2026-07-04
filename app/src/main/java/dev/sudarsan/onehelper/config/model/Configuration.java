@@ -11,7 +11,7 @@ public class Configuration {
     public Configuration(@JsonProperty("templatePath") String templatePath,
                          @JsonProperty("enabled") Boolean enabled) {
         this.templatePath = templatePath;
-        this.enabled = enabled;
+        this.enabled = enabled != null ? enabled : true;
     }
 
     public String getTemplatePath() {

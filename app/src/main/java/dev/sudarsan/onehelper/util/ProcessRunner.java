@@ -11,9 +11,9 @@ import java.util.concurrent.TimeUnit;
 
 public class ProcessRunner {
     private static final long PROCESS_WAIT_TIME_SECONDS = 60;
-    
+
     public static ProcessResult run(Path workingDir, String... command) throws ProcessRunException {
-        try{
+        try {
             ProcessBuilder pb = new ProcessBuilder(command).redirectErrorStream(true);
 
             if (workingDir != null) {
@@ -26,8 +26,8 @@ public class ProcessRunner {
             checkProcessTimeAndInterrupt(process);
 
             return new ProcessResult(process.exitValue(), output);
-        } catch (ProcessRunException e){
-            throw new ProcessRunException("Error running the command: "+e.getMessage());
+        } catch (ProcessRunException e) {
+            throw new ProcessRunException("Error running the command: " + e.getMessage());
         }
     }
 

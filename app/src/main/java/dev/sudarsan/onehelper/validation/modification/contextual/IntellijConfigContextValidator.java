@@ -15,13 +15,13 @@ import java.nio.file.Path;
 public class IntellijConfigContextValidator implements ContextualValidator<IntellijIdeConfigModificationConfig> {
     private final ResolutionInput resolutionInput;
 
-    public IntellijConfigContextValidator(ResolutionInput resolutionInput){
+    public IntellijConfigContextValidator(ResolutionInput resolutionInput) {
         this.resolutionInput = resolutionInput;
     }
 
     @Override
     public void validate(ProjectContext context, IntellijIdeConfigModificationConfig modificationConfig) throws ValidationException {
-        for (Configuration configuration: modificationConfig.getConfigurations()){
+        for (Configuration configuration : modificationConfig.getConfigurations()) {
             Path templateFile = context.resolveResourcesFile(configuration.getTemplatePath());
             validateTemplateFile(templateFile);
         }
@@ -34,8 +34,8 @@ public class IntellijConfigContextValidator implements ContextualValidator<Intel
         String configContent = getStringFromConfiguration(templateFile);
         String resolvedConfig = pipeline.resolve(configContent);
 
-        if (resolvedConfig.contains("{{")){
-            throw new ValidationException("The template file: "+templateFile+" cannot be resolved as there is no sufficient inputs for the resolution");
+        if (resolvedConfig.contains("{{")) {
+            throw new ValidationException("The template file: " + templateFile + " cannot be resolved as there is no sufficient inputs for the resolution");
         }
     }
 
@@ -43,7 +43,7 @@ public class IntellijConfigContextValidator implements ContextualValidator<Intel
         try {
             return Files.readString(file);
         } catch (IOException e) {
-            throw new ValidationException("Error reading the configuration template file: " + e.getMessage());
+            throw new ValidationException("Error reading the configuration template file (" + file + "): " + e.getMessage());
         }
     }
 }

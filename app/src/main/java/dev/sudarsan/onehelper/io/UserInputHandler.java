@@ -31,7 +31,7 @@ public class UserInputHandler {
     }
 
     private static Path getProjectPath() {
-        System.out.print("Enter the project path: ");
+        Console.ask("Enter the project path: ");
         try {
             String path = sc.nextLine();
             return PathValidator.validateDirectoryPath(path);
@@ -78,7 +78,7 @@ public class UserInputHandler {
     }
 
     private static String getSelectionFromList(List<String> list, String item) {
-        System.out.println("Select the " + item + ":");
+        System.out.println("\nSelect the " + item + ":");
         for (int i = 0; i < list.size(); i++) {
             System.out.println((i + 1) + ") " + list.get(i));
         }
@@ -90,7 +90,7 @@ public class UserInputHandler {
     }
 
     public static int getOption(int size) {
-        System.out.print("Enter the option: ");
+        Console.ask("Enter the option: ");
         String option = sc.nextLine();
 
         try {

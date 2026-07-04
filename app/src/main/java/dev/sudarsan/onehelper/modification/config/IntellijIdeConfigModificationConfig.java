@@ -13,7 +13,7 @@ public class IntellijIdeConfigModificationConfig extends IdeConfigModificationCo
     public IntellijIdeConfigModificationConfig(@JsonProperty("filePath") String filePath,
                                                @JsonProperty("enabled") Boolean enabled,
                                                @JsonProperty("configurations") List<Configuration> configurations) {
-        super(filePath == null ? ".idea/workspace" : filePath, enabled);
+        super(filePath == null ? ".idea/workspace.xml" : filePath, enabled);
         this.configurations = configurations;
     }
 

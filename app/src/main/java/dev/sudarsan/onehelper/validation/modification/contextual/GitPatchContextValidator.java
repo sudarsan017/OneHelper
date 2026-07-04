@@ -14,15 +14,15 @@ import java.nio.file.Path;
 public class GitPatchContextValidator implements ContextualValidator<GitPatchModificationConfig> {
     @Override
     public void validate(ProjectContext context, GitPatchModificationConfig modificationConfig) throws ValidationException {
-        try{
+        try {
             Path targetDirectory = context.getProjectRoot();
             Path sourcePatchFile = context.resolveResourcesFile(modificationConfig.getSourcePath());
 
             ensureGitWorkingTree(targetDirectory);
             ensurePatchFileReadable(sourcePatchFile);
             ensurePatchAppliesOnDirectory(targetDirectory, sourcePatchFile);
-        } catch (ProcessRunException e){
-            throw new ValidationException("Error occurred while validating git commands: "+e.getMessage());
+        } catch (ProcessRunException e) {
+            throw new ValidationException("Error occurred while validating git commands: " + e.getMessage());
         }
     }
 
